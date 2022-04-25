@@ -19,11 +19,11 @@ namespace NBAFormulaFinder
             double[] test2 = new double[1200];
             double bestMSE = 10000000000000;
 
-            for (double i = 0.8; i <= 1; i += .01)
+            for (double i = 78; i <= 82; i += .1)
             {
-                for (double j = 0.2; j <= 0.4; j += .01)
+                for (double j = 0; j <= 1; j += .1)
                 {
-                    string query = $"select ({i}*sum(WS)+{j}*sum(VORP)) as TeamEstWins, " +
+                    string query = $"select ({i}*sum(WS_48*(cast(MP as float)/3936))+{j}*sum(BPM*(cast(MP as float)/3936))) as TeamEstWins, " +
                         "Wins " +
                         "from advancedstats, standings " +
                         "where advancedstats.year = standings.year " +
